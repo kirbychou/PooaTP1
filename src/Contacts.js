@@ -24,6 +24,13 @@ Contact = (function (self) {
             }
         };
 
+
+
+        this.search = function (strategie) {
+            return strategie.search(l);
+        };
+
+
         this.get = function (id) {
             for (var iter = 0; iter < l.length; iter++) {
                 if (l[iter].id() === id) {
@@ -35,17 +42,17 @@ Contact = (function (self) {
 
 
         this.getFromName = function (firstName, lastName) {
-            var foo=[];
+            var foo = [];
             for (var iter = 0; iter < l.length; iter++) {
-                if (l[iter].firstName() === firstName && l[iter].lastName() === lastName ) {
+                if (l[iter].firstName() === firstName && l[iter].lastName() === lastName) {
                     foo.push(l[iter]);
                 }
             }
-            if(foo.length > 1){
+            if (foo.length > 1) {
                 return foo;
-            }else if(foo.length === 0){
+            } else if (foo.length === 0) {
                 return null;
-            }else{
+            } else {
                 return foo[0];
             }
 

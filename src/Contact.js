@@ -3,8 +3,11 @@ Contact = (function (self) {
     "use strict";
     self.Gender = {MR: 1, MS: 2};
     self.MailCategory = {PERSO: 1, PRO: 2};
+
     self.Contact = function (value, value1, value2) {
         var nom, prenom, genre, mail, phone, numid;
+
+
         this.gender = function () {
             return genre;
         };
@@ -27,7 +30,7 @@ Contact = (function (self) {
         this.add_phone = function (tel) {
             phone.push(tel);
         };
-        this.addPhone = function (tel){
+        this.addPhone = function (tel) {
             phone.push(tel);
         };
 
