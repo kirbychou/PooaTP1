@@ -14,7 +14,7 @@ Contact = (function (self) {
         };
         this.type = function () {
             return type;
-        }
+        };
         var init = function (value, value1, value2) {
             numero = value;
             categorie = value1;
