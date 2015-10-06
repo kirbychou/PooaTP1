@@ -5,6 +5,9 @@ Contact = (function (self) {
     var List = function () {
         var l = [];
 
+        this.list = function(){
+            return l;
+        };
         this.clear = function () {
             l = [];
         };
@@ -39,8 +42,6 @@ Contact = (function (self) {
                 }
             }
         };
-
-
         this.getFromName = function (firstName, lastName) {
             var foo = [];
             for (var iter = 0; iter < l.length; iter++) {
@@ -48,6 +49,7 @@ Contact = (function (self) {
                     foo.push(l[iter]);
                 }
             }
+
             if (foo.length > 1) {
                 return foo;
             } else if (foo.length === 0) {
@@ -57,6 +59,11 @@ Contact = (function (self) {
             }
 
         };
+
+        this.iterator = function () {
+            return new Contact.Iterator(l);
+        };
+
     };
 
     var liste = null;

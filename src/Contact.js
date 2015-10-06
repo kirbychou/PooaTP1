@@ -7,7 +7,12 @@ Contact = (function (self) {
     self.Contact = function (value, value1, value2) {
         var nom, prenom, genre, mail, phone, numid;
 
-
+        this.toObject = function () {
+            return {
+                "FirstName": nom,
+                "lastName": prenom
+            };
+        };
         this.gender = function () {
             return genre;
         };
@@ -36,7 +41,7 @@ Contact = (function (self) {
 
         this.removePhone = function (tel) {
             for (var iter = 0; iter < phone.length; iter++) {
-                if(phone[iter] === tel){
+                if (phone[iter] === tel) {
                     phone[iter].pop();
                 }
             }
@@ -66,26 +71,26 @@ Contact = (function (self) {
 
         this.changePhone = function (numero, newnumero) {
             for (var iter = 0; iter < phone.length; iter++) {
-                if(phone[iter].number() === numero){
+                if (phone[iter].number() === numero) {
                     phone[iter] = new Contact.Phone(newnumero, phone[iter].type(), phone[iter].category());
                 }
             }
 
-            for(var i =0 ; i< observeur.length; i++){
+            for (var i = 0; i < observeur.length; i++) {
                 observeur[i].notified(this);
             }
         };
-        var observeur =[];
-        this.register = function(proxy){
+        var observeur = [];
+        this.register = function (proxy) {
             observeur.push(proxy);
         };
 
-        var tag ;
+        var tag;
 
         this.addTag = function (tag_) {
             tag = tag_;
         };
-        this.tag = function(){
+        this.tag = function () {
             return tag;
         };
         init(value, value1, value2);
