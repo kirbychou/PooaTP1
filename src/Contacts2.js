@@ -1,12 +1,15 @@
 var Contact = Contact || {};
 Contact = (function (self) {
     "use strict";
-
-    var List = function () {
+    self.Contacts2 = function () {
         var l = [];
 
         this.clear = function () {
             l = [];
+        };
+
+        this.list = function () {
+            return l;
         };
 
         this.size = function () {
@@ -16,6 +19,7 @@ Contact = (function (self) {
         this.add = function (value) {
             l.push(value);
         };
+
         this.remove = function (id) {
             for (var iter = 0; iter < l.length; iter++) {
                 if (l[iter].id() === id) {
@@ -29,6 +33,9 @@ Contact = (function (self) {
             return strategie.search(l);
         };
 
+        this.change = function (changement) {
+            return changement.change(l);
+        };
 
         this.get = function (id) {
 
@@ -39,6 +46,16 @@ Contact = (function (self) {
                 }
             }
         };
+
+        this.contientTag = function(tag){
+            for(var i=0; i< l.length; i++){
+                if(l[i].tag() === tag){
+                    return true;
+                }
+            }
+            return false;
+        };
+
 
 
         this.getFromName = function (firstName, lastName) {
@@ -59,16 +76,6 @@ Contact = (function (self) {
         };
     };
 
-    var liste = null;
-
-    self.Contacts = {
-        instance: function () {
-            if (!liste) {
-                liste = new List();
-            }
-            return liste;
-        }
-    };
     return self;
 }(Contact || {}));
 

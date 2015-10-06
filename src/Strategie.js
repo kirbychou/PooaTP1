@@ -19,10 +19,26 @@ Contact = (function (self) {
         this.search = function (contact) {
 
             for (var iter = 0; iter < contact.length; iter++) {
-                if (contact[iter].mails() === email) {
-                    return contact[iter];
+                for (var it = 0; it < contact[iter].mails().length; it++) {
+                    if (contact[iter].mails()[it].address() === email) {
+                        return contact[iter];
+                    }
                 }
             }
+            return null;
+        };
+    };
+
+    self.FromPhoneSearchStrategy = function (tel) {
+        this.search = function (contact) {
+            for (var iter = 0; iter < contact.length; iter++) {
+                for (var it = 0; it < contact[iter].phones().length; it++) {
+                    if (contact[iter].phones()[it].number() === tel) {
+                        return contact[iter];
+                    }
+                }
+            }
+            return null;
 
         };
     };

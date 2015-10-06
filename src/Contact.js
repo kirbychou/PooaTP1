@@ -34,6 +34,14 @@ Contact = (function (self) {
             phone.push(tel);
         };
 
+        this.removePhone = function (tel) {
+            for (var iter = 0; iter < phone.length; iter++) {
+                if(phone[iter] === tel){
+                    phone[iter].pop();
+                }
+            }
+        };
+
         this.id = function () {
             return numid;
         };
@@ -50,12 +58,36 @@ Contact = (function (self) {
             nom = value2;
             prenom = value1;
             genre = value;
-            mail = new Array(0);
-            phone = new Array(0);
+            mail = [];
+            phone = [];
             numid = id();
             // console.log(numid);
         };
 
+        this.changePhone = function (numero, newnumero) {
+            for (var iter = 0; iter < phone.length; iter++) {
+                if(phone[iter].number() === numero){
+                    phone[iter] = new Contact.Phone(newnumero, phone[iter].type(), phone[iter].category());
+                }
+            }
+
+            for(var i =0 ; i< observeur.length; i++){
+                observeur[i].notified(this);
+            }
+        };
+        var observeur =[];
+        this.register = function(proxy){
+            observeur.push(proxy);
+        };
+
+        var tag ;
+
+        this.addTag = function (tag_) {
+            tag = tag_;
+        };
+        this.tag = function(){
+            return tag;
+        };
         init(value, value1, value2);
     };
     return self;
