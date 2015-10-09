@@ -7,7 +7,7 @@ Contact = (function (self) {
 
 
     self.Iterator = function (tableau) {
-        var index = -1;
+        var index = 0;
         var tab = [];
 
         var init = function (tableau) {
@@ -19,18 +19,21 @@ Contact = (function (self) {
         this.hasNext = function () {
             if (tab[index + 1] !== null) {
                 return true;
+            } else {
+                return false;
             }
-            return false;
         };
-
-        this.next = function () {
-            index = index + 1;
+        this.first = function () {
+            index = 0;
             return tab[index];
         };
-
-
-        this.iterator = function () {
-            return this;
+        this.next = function () {
+            if (this.hasNext()) {
+                index = index + 1;
+                return tab[index - 1];
+            } else {
+                return null;
+            }
         };
 
 

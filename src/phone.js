@@ -2,7 +2,7 @@ var Contact = Contact || {};
 Contact = (function (self) {
     "use strict";
     self.Gender = {MR: 1, MS: 2};
-    self.PhoneCategory = {PERSO: 1, PRO: 2};
+    self.PhoneCategory = {PERSO: 1, PRO: 2, PHONE: 3};
     self.PhoneType = {MOBILE: 1, FIXE: 2};
     self.Phone = function (value, value1, value2) {
         var numero, categorie, type;

@@ -29,6 +29,8 @@ Contact = (function (self) {
         this.phones = function () {
             return phone;
         };
+
+
         this.add_mail = function (v) {
             mail.push(v);
         };
