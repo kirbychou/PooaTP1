@@ -9,8 +9,8 @@ Contact = (function (self) {
 
         this.toObject = function () {
             return {
-                "FirstName": nom,
-                "lastName": prenom
+                "FirstName": prenom,
+                "lastName": nom
             };
         };
         this.gender = function () {
@@ -38,7 +38,9 @@ Contact = (function (self) {
         this.addPhone = function (tel) {
             phone.push(tel);
         };
-
+        this.setID = function (id) {
+            numid = id;
+        };
         this.removePhone = function (tel) {
             for (var iter = 0; iter < phone.length; iter++) {
                 if (phone[iter] === tel) {

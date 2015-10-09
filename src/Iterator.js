@@ -33,6 +33,7 @@ Contact = (function (self) {
             return this;
         };
 
+
     };
     return self;
 }(Contact || {}));

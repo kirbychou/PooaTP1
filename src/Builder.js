@@ -26,6 +26,12 @@ Contact = (function (self) {
             contact.addTag(tag);
             return contact;
         };
+        this.loadContact = function (id, value, value1, value2) {
+            contact = new Contact.Contact(value, value1, value2);
+            contact.setID(id);
+            return contact;
+        };
+
     };
     return self;
 }(Contact || {}));

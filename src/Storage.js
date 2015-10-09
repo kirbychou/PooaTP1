@@ -12,6 +12,15 @@ Contact = (function (self) {
                 localStorage.setItem("contacts/" + contact[i].id(), JSON.stringify(contact[i].toObject()));
             }
         };
+
+        this.load = function (contacts) {
+            for (var i in localStorage) {
+                var objectJson = JSON.parse(localStorage[i]);
+                var id = i.split("/")[1];
+
+                contacts.add(new Contact.Builder().loadContact(id, Contact.Gender.MR, objectJson.FirstName, objectJson.lastName));
+            }
+        };
     };
     var session = null;
     self.Storage = {
